@@ -1,0 +1,52 @@
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meiyu-Club-Login</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+  <link data-turbolinks-track="true" href="/assets/application.css?body=1" media="all" rel="stylesheet" />
+  <link data-turbolinks-track="true" href="/assets/comments.css?body=1" media="all" rel="stylesheet" />
+  <link data-turbolinks-track="true" href="/assets/posts.css?body=1" media="all" rel="stylesheet" />
+  <link data-turbolinks-track="true" href="/assets/scaffolds.css?body=1" media="all" rel="stylesheet" />
+  <script data-turbolinks-track="true" src="/assets/jquery.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/jquery_ujs.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/turbolinks.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/comments.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/posts.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/application.js?body=1"></script>
+</head>
+<body>
+
+  <!-- ここからヘッダーのエリア -->
+
+
+
+
+
+
+<h2 class="h2-title">My Post <small class="pull-right"><%= link_to '投稿する', new_post_path, :class => "btn btn-danger" %></small></h2>
+
+<% @posts.each do |post| %>
+<div class="post">
+  <h3><%= post.subject %> <small class="pull-right"><%= post.date %></small></h3>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- 写真機能はここから -->
+      <% if post.picture.present? %>
+      <%= link_to image_tag(post.picture_url) , post %>
+      <% end %>
+      <!-- 写真機能はここまでに！ -->
+      <p class="post_text"><%= post.body %></p>
+    </div>
+  </div>
+  <div class="clearfix">
+    <p class="pull-right">
+      <%= link_to '表示', post , :class => "btn btn-primary" %>
+      <%= link_to '編集', edit_post_path(post) , :class => "btn btn-success" %>
+      <%= link_to '削除', post, method: :delete, data: { confirm: '本当に削除しますか？' } , :class => "btn btn-warning" %>
+    </p>
+  </div>
+</div>
+<% end %>

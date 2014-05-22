@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盟友クラブ</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <!-- ここからヘッダーのエリア -->
+  <header id="header">
+    <div class="container">
+      <h1><%=link_to image_tag("meiyuclub_logotype.png")+"盟友クラブ", root_path %></h1>
+      <ul>
+      <br><br><br><br>
+        <li><%=link_to "Top", root_path %></li>
+        <li><%=link_to "Begin", new_post_path %></li>
+        <li><%=link_to "新規登録", new_user_registration_path %></li>
+        <li><%=link_to "Login", new_user_session_path %></li>
+         <li><%=link_to "Sign_out",destroy_user_session_path %></li>
+         <li><%= link_to "Search", posts_path %></li>
+        <li><%= link_to "News", new_post_path %></li>
+        
+      </ul>
+    </div>
+  </header>
+  <!-- ここまでヘッダーのエリア -->
+
+  <!-- ここからトップ画像のエリア -->
+  <div class="jumbotron">
+    <div class="container">
+  
+      <h1 class="alpaka">骨のあるプロジェクトを頼むぜ！</h1>
+      </font>
+    </div>
+  </div>
+  <!-- ここまでトップ画像のエリア -->
+
+  <div id="content" class="container">
+    <div class="top_post">
+      <div id="main" class="col-sm-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <!-- ここからフッターのエリア -->
+  <footer id="footer">
+    <div class="container">
+      <p class="text-right"><small>&copy; 2014</small></p>
+    </div>
+  </footer>
+  <!-- ここまでフッターのエリア -->
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+</body>
+</html>
